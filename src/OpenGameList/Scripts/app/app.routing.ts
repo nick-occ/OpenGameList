@@ -1,6 +1,7 @@
 ﻿import { ModuleWithProviders } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { ItemDetailComponent } from "./item-detail.component";
+import { ItemDetailEditComponent } from "./item-detail-edit.component";
+import { ItemDetailViewComponent } from "./item-detail-view.component";
 import { HomeComponent } from "./home.component";
 import { AboutComponent } from "./about.component";
 import { LoginComponent } from "./login.component";
@@ -24,8 +25,12 @@ const appRoutes: Routes = [
         component: LoginComponent
     },
     {
-        path: "item/:id",
-        component: ItemDetailComponent
+        path: "item/edit/:id",
+        component: ItemDetailEditComponent
+    },
+    {
+        path: "item/view/:id",
+        component: ItemDetailViewComponent
     },
     {
         path: '**',
