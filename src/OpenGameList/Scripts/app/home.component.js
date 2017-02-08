@@ -25,7 +25,7 @@ System.register(["@angular/core"], function (exports_1, context_1) {
                 core_1.Component({
                     selector: "opengamelist",
                     template: " \n        <h1>{{title}}</h1>\n\n        <item-list class=\"latest\"></item-list>\n\n        <item-list class=\"most-viewed\"></item-list>\n\n        <item-list class=\"random\"></item-list>\n\n    ",
-                    styles: ["\n\n\n        item-list {\n\n            min-width: 332px;\n\n            border: 1px solid #aaaaaa;\n\n            display: inline-block;\n\n            margin: 0 10px;\n\n            padding: 10px;\n\n        }\n\n        item-list.latest {\n\n            background-color: #f9f9f9;\n\n        }\n\n        item-list.most-viewed {\n\n            background-color: #f0f0f0;\n\n        }\n\n        item-list.random {\n\n            background-color: #e9e9e9;\n\n        }\n\n    "]
+                    styles: []
                 })
             ], HomeComponent);
             exports_1("HomeComponent", HomeComponent);
