@@ -15,6 +15,12 @@ using Nelibur.ObjectMapper;
 using OpenGameList.Data.Items;
 using OpenGameListWebApp.ViewModels;
 
+using OpenGameList.Data.Users;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+using OpenGameListWebApp.Classes;
+using Microsoft.IdentityModel.Tokens;
+
 namespace OpenGameList
 {
     public class Startup
@@ -39,6 +45,15 @@ namespace OpenGameList
 
             //Add EntityFramework's Identity support.
             services.AddEntityFramework();
+
+            //Add Identity Services & Stores
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+             {
+                 config.User.RequireUniqueEmail = true;
+                 config.Password.RequireNonAlphanumeric = false;
+                 config.Cookies.ApplicationCookie.AutomaticChallenge = false;
+             }).AddEntityFrameworkStores<ApplicationDbContext>()
+             .AddDefaultTokenProviders();
 
             //Add ApplicationDbContext
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -80,6 +95,25 @@ namespace OpenGameList
                     context.Context.Response.Headers["Expires"] =
                     Configuration["StaticFiles:Headers:Expires"];
 
+                }
+            });
+
+            // Add a custom Jwt Provider to generate Tokens
+            app.UseJwtProvider();
+
+            // Add the Jwt Bearer Header Authentication to validate Tokens
+            app.UseJwtBearerAuthentication(new JwtBearerOptions()
+            {
+                AutomaticAuthenticate = true,
+                AutomaticChallenge = true,
+                RequireHttpsMetadata = false,
+                TokenValidationParameters = new TokenValidationParameters()
+                {
+                    IssuerSigningKey = JwtProvider.SecurityKey,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = JwtProvider.Issuer,
+                    ValidateIssuer = false,
+                    ValidateAudience = false
                 }
             });
 

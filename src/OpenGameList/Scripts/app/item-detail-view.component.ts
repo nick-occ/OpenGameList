@@ -1,4 +1,5 @@
-﻿import { Component, OnInit } from "@angular/core";
+﻿import { AuthService } from "./auth.service"; 
+import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { Item } from "./item";
 import { ItemService } from "./item.service";
@@ -12,8 +13,8 @@ import { ItemService } from "./item.service";
         </h2> 
         <div class="item-container"> 
             <ul class="nav nav-tabs"> 
-                <li role="presentation"> 
-                    <a href="#" (click)="onItemDetailEdit(item)">Edit</a> 
+                <li *ngIf="authService.isLoggedIn()" role="presentation"> 
+                    <a href="javascript:void(0)" (click)="onItemDetailEdit(item)">Edit</a> 
                 </li> 
                 <li role="presentation" class="active"> 
                     <a href="#">View</a> 
@@ -39,7 +40,9 @@ import { ItemService } from "./item.service";
 export class ItemDetailViewComponent {
     item: Item;
 
-    constructor(private itemService: ItemService,
+    constructor(
+        private authService: AuthService,
+        private itemService: ItemService,
         private router: Router,
         private activatedRoute: ActivatedRoute) {
     }

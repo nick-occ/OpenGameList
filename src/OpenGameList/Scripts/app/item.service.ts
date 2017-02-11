@@ -1,4 +1,5 @@
-﻿import { Injectable } from "@angular/core";
+﻿import { AuthHttp } from "./auth.http"; 
+import { Injectable } from "@angular/core";
 import { Http, Response, Headers, RequestOptions } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 import { Item } from "./item";
@@ -8,7 +9,7 @@ export class ItemService {
     // private Data: { Latest: Item[], MostViewed: Item[], Random: Item[] };
     private baseUrl = "api/items/";  // web api URL 
 
-    constructor(private http: Http) { } 
+    constructor(private http: AuthHttp) { } 
 
     // calls the [GET] /api/items/GetLatest/{n} Web API method to retrieve the latest items. 
     getLatest(num?: number) {
