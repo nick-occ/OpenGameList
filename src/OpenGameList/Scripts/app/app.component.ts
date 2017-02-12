@@ -29,8 +29,8 @@ import { Router } from "@angular/router";
                         </li> 
                         <li *ngIf="!authService.isLoggedIn()" [class.active]="isActive(['login'])">
                             <a class="login" [routerLink]="['login']">Login</a>
-                        </li> 
-                        <li *ngIf="authService.isLoggedIn
+                        </li>
+                        <li *ngIf="authService.isLoggedIn()">
                             <a class="logout" href="javascript:void(0)"(click)="logout()">Logout</a>
                         </li>
                         <li *ngIf="authService.isLoggedIn()" [class.active]="isActive(['item/edit', 0])">
@@ -59,6 +59,7 @@ export class AppComponent {
             true);
     } 
 
+    
     logout(): boolean {
         // logs out the user, then redirects him to Welcome View. 
         if (this.authService.logout()) {

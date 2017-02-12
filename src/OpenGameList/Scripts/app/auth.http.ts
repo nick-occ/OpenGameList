@@ -39,6 +39,7 @@ export class AuthHttp {
                 if (opts.headers == null) {
                     opts.headers = new Headers();
                 }
+                opts.headers.set("Authorization", `Bearer ${auth.access_token}`); 
             }
         }
     }

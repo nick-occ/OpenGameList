@@ -16,8 +16,8 @@ import { ItemService } from "./item.service";
                 <li *ngIf="authService.isLoggedIn()" role="presentation"> 
                     <a href="javascript:void(0)" (click)="onItemDetailEdit(item)">Edit</a> 
                 </li> 
-                <li role="presentation" class="active"> 
-                    <a href="#">View</a> 
+                <li role="presentation" class="active">
+                    <a href="javascript:void(0)">View</a>
                 </li> 
             </ul> 
             <div class="panel panel-default"> 

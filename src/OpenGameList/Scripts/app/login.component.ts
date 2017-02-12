@@ -32,6 +32,10 @@ export class LoginComponent {
     constructor(private fb: FormBuilder,
         private router: Router,
         private authService: AuthService) {
+        if (this.authService.isLoggedIn()) {
+            this.router.navigate([""]);
+        }
+
         this.loginForm = fb.group({
             username: ["", Validators.required],
             password: ["", Validators.required]

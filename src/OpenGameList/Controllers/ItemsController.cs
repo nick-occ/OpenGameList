@@ -8,6 +8,9 @@ using Newtonsoft.Json;
 using OpenGameList.Data;
 using Nelibur.ObjectMapper;
 using OpenGameList.Data.Items;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using OpenGameListWebApp.Classes;
 
 namespace OpenGameListWebApp.Controllers
 {
@@ -57,6 +60,7 @@ namespace OpenGameListWebApp.Controllers
         ///</summary>
         ///<returns>Creates a new item and return it accordingly.</returns>
         [HttpPost()]
+        [Authorize]
         public IActionResult Add([FromBody]ItemViewModel ivm)
         {
             if(ivm != null)
@@ -66,12 +70,10 @@ namespace OpenGameListWebApp.Controllers
                 //override any property that could be wise to set from server-side only
                 item.CreatedDate = item.LastModifiedDate = DateTime.Now;
 
-                //TODO: replace the following with the current user's id when authentication will be available.
+                item.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-                item.UserId = DbContext.Users.Where(u => u.UserName == "Admin").FirstOrDefault().Id;
-
-                //add the new item
-                DbContext.Items.Add(item);
+                 //add the new item
+                 DbContext.Items.Add(item);
                 //persist the changes into the Database.
                 DbContext.SaveChanges();
 
@@ -87,6 +89,7 @@ namespace OpenGameListWebApp.Controllers
         ///</summary>
         ///<returns>Updates an existing Item and return it accordingly</returns>
         [HttpPut("{id}")]
+        [Authorize]
         public IActionResult Update(int id, [FromBody]ItemViewModel ivm)
         {
             if(ivm != null)
@@ -120,6 +123,7 @@ namespace OpenGameListWebApp.Controllers
         ///</summary>
         ///<returns>Deletes an Item, returning a HTTP status 200 (ok) when done.</returns>
         [HttpDelete("{id}")]
+        [Authorize]
         public IActionResult Delete(int id)
         {
             var item = DbContext.Items.Where(i => i.Id == id).FirstOrDefault();

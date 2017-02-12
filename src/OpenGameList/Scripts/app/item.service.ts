@@ -50,7 +50,7 @@ export class ItemService {
     // calls the [POST] /api/items/ Web API method to add a new item.
     add(item: Item) {
         var url = this.baseUrl;
-
+        debugger;
         return this.http.post(url, JSON.stringify(item),
             this.getRequestOptions())
             .map(response => response.json())

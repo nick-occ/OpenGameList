@@ -35,6 +35,9 @@ System.register(["@angular/core", "@angular/forms", "@angular/router", "./auth.s
                     this.title = "Login";
                     this.loginForm = null;
                     this.loginError = false;
+                    if (this.authService.isLoggedIn()) {
+                        this.router.navigate([""]);
+                    }
                     this.loginForm = fb.group({
                         username: ["", forms_1.Validators.required],
                         password: ["", forms_1.Validators.required]
