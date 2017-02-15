@@ -40,9 +40,17 @@ export class AuthService {
             });
     }
 
-    logout(): boolean {
-        this.setAuth(null);
-        return false;
+    logout(): any {
+        return this.http.post(
+            "api/Accounts/Logout",
+            null)
+            .map(response => {
+                this.setAuth(null);
+                return true;
+            })
+            .catch(err => {
+                return Observable.throw(err);
+            });
     }
 
     //Converts a Json object to urlencoded format

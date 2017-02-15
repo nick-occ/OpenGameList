@@ -56,6 +56,7 @@ System.register(["@angular/core", "@angular/http"], function (exports_1, context
                             if (opts.headers == null) {
                                 opts.headers = new http_1.Headers();
                             }
+                            opts.headers.set("Authorization", "Bearer " + auth.access_token);
                         }
                     }
                 };

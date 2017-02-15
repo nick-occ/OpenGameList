@@ -76,6 +76,7 @@ System.register(["./auth.http", "@angular/core", "@angular/http", "rxjs/Observab
                 // calls the [POST] /api/items/ Web API method to add a new item.
                 ItemService.prototype.add = function (item) {
                     var url = this.baseUrl;
+                    debugger;
                     return this.http.post(url, JSON.stringify(item), this.getRequestOptions())
                         .map(function (response) { return response.json(); })
                         .catch(this.handleError);

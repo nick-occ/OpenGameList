@@ -12,21 +12,22 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using OpenGameListWebApp.Classes;
 
+using Microsoft.AspNetCore.Identity;
+using OpenGameList.Data.Users;
+
 namespace OpenGameListWebApp.Controllers
 {
-    [Route("api/[controller]")]
-    public class ItemsController : Controller
+    public class ItemsController : BaseController   
     {
-        #region Private Fields
-        private ApplicationDbContext DbContext;
-        #endregion Private Fields
-
         #region Constructor
-        public ItemsController(ApplicationDbContext context)
-        {
-            // Dependency Injetion
-            DbContext = context;
-        }
+        public ItemsController(
+            ApplicationDbContext context,
+            SignInManager<ApplicationUser> signInManager,
+            UserManager<ApplicationUser> userManager): base(
+                context,
+                signInManager,
+                userManager)
+        {}
         #endregion Constructor 
 
         #region RESTful Conventions 
@@ -61,7 +62,7 @@ namespace OpenGameListWebApp.Controllers
         ///<returns>Creates a new item and return it accordingly.</returns>
         [HttpPost()]
         [Authorize]
-        public IActionResult Add([FromBody]ItemViewModel ivm)
+        public async Task<IActionResult> Add([FromBody]ItemViewModel ivm)
         {
             if(ivm != null)
             {
@@ -70,7 +71,7 @@ namespace OpenGameListWebApp.Controllers
                 //override any property that could be wise to set from server-side only
                 item.CreatedDate = item.LastModifiedDate = DateTime.Now;
 
-                item.UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                item.UserId = await GetCurrentUserId();
 
                  //add the new item
                  DbContext.Items.Add(item);

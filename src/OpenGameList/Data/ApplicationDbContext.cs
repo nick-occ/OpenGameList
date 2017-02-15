@@ -4,10 +4,11 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using OpenGameList.Data.Items; 
 using OpenGameList.Data.Users; 
 using OpenGameList.Data.Comments;
- 
+using OpenIddict;
+
 namespace OpenGameList.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : OpenIddictDbContext<ApplicationUser>
     {
         #region Constructor 
         public ApplicationDbContext(DbContextOptions options) : base(options)

@@ -17,14 +17,16 @@
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
     "Newtonsoft.Json": "9.0.1",
     "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.1.0",
-    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.1.0",
+    "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "1.0.0",
     "Microsoft.EntityFrameworkCore": "1.1.0",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
     "Microsoft.EntityFrameworkCore.Design": "1.1.0",
     "TinyMapper": "2.0.8",
-    "Microsoft.EntityFrameworkCore.Relational.Design": "1.1.0",
+    "Microsoft.EntityFrameworkCore.Relational.Design": "1.0.0",
     "Microsoft.IdentityModel.Tokens": "5.1.2",
-    "System.IdentityModel.Tokens.Jwt": "5.1.2"
+    "System.IdentityModel.Tokens.Jwt": "5.1.2",
+    "OpenIddict": "1.0.0-alpha2-0419",
+    "Microsoft.AspNetCore.Authentication.Google": "1.0.0"
   },
 
   "tools": {

@@ -8,10 +8,11 @@ using System.Threading.Tasks;
 using OpenGameList.Data.Items;
 using OpenGameList.Data.Comments;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using OpenIddict;
 
 namespace OpenGameList.Data.Users
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : OpenIddictUser
     {
         #region Constructor 
         public ApplicationUser()
