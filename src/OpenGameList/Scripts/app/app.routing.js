@@ -1,7 +1,7 @@
-System.register(["@angular/router", "./item-detail-edit.component", "./item-detail-view.component", "./home.component", "./about.component", "./login.component", "./page-not-found.component"], function (exports_1, context_1) {
+System.register(["@angular/router", "./item-detail-edit.component", "./item-detail-view.component", "./home.component", "./about.component", "./login.component", "./page-not-found.component", "./user-edit.component"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, item_detail_edit_component_1, item_detail_view_component_1, home_component_1, about_component_1, login_component_1, page_not_found_component_1, appRoutes, AppRoutingProviders, AppRouting;
+    var router_1, item_detail_edit_component_1, item_detail_view_component_1, home_component_1, about_component_1, login_component_1, page_not_found_component_1, user_edit_component_1, appRoutes, AppRoutingProviders, AppRouting;
     return {
         setters: [
             function (router_1_1) {
@@ -24,6 +24,9 @@ System.register(["@angular/router", "./item-detail-edit.component", "./item-deta
             },
             function (page_not_found_component_1_1) {
                 page_not_found_component_1 = page_not_found_component_1_1;
+            },
+            function (user_edit_component_1_1) {
+                user_edit_component_1 = user_edit_component_1_1;
             }
         ],
         execute: function () {
@@ -43,6 +46,10 @@ System.register(["@angular/router", "./item-detail-edit.component", "./item-deta
                 {
                     path: "login",
                     component: login_component_1.LoginComponent
+                },
+                {
+                    path: "register",
+                    component: user_edit_component_1.UserEditComponent
                 },
                 {
                     path: "item/edit/:id",

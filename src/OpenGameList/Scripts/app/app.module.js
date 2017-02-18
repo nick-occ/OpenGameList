@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/forms", "@angular/platform-browser", "@angular/http", "@angular/router", "rxjs/Rx", "./app.component", "./item-list.component", "./item-detail-edit.component", "./item-detail-view.component", "./login.component", "./page-not-found.component", "./app.routing", "./auth.http", "./auth.service", "./item.service"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/forms", "@angular/platform-browser", "@angular/http", "@angular/router", "rxjs/Rx", "./app.component", "./item-list.component", "./item-detail-edit.component", "./item-detail-view.component", "./login.component", "./page-not-found.component", "./user-edit.component", "./app.routing", "./auth.http", "./auth.service", "./item.service"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,7 +7,7 @@ System.register(["@angular/core", "@angular/forms", "@angular/platform-browser",
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, forms_1, platform_browser_1, http_1, router_1, app_component_1, item_list_component_1, item_detail_edit_component_1, item_detail_view_component_1, login_component_1, page_not_found_component_1, app_routing_1, auth_http_1, auth_service_1, item_service_1, AppModule;
+    var core_1, forms_1, platform_browser_1, http_1, router_1, app_component_1, item_list_component_1, item_detail_edit_component_1, item_detail_view_component_1, login_component_1, page_not_found_component_1, user_edit_component_1, app_routing_1, auth_http_1, auth_service_1, item_service_1, AppModule;
     return {
         setters: [
             function (core_1_1) {
@@ -45,6 +45,9 @@ System.register(["@angular/core", "@angular/forms", "@angular/platform-browser",
             function (page_not_found_component_1_1) {
                 page_not_found_component_1 = page_not_found_component_1_1;
             },
+            function (user_edit_component_1_1) {
+                user_edit_component_1 = user_edit_component_1_1;
+            },
             function (app_routing_1_1) {
                 app_routing_1 = app_routing_1_1;
             },
@@ -73,7 +76,8 @@ System.register(["@angular/core", "@angular/forms", "@angular/platform-browser",
                         item_detail_edit_component_1.ItemDetailEditComponent,
                         item_detail_view_component_1.ItemDetailViewComponent,
                         login_component_1.LoginComponent,
-                        page_not_found_component_1.PageNotFoundComponent
+                        page_not_found_component_1.PageNotFoundComponent,
+                        user_edit_component_1.UserEditComponent
                     ],
                     // modules 
                     imports: [

@@ -2,6 +2,7 @@
 import { FormBuilder, Validators } from "@angular/forms"; 
 import { Router } from "@angular/router"; 
 import { AuthService } from "./auth.service";
+import { UserEditComponent } from "./user-edit.component";
 
 @Component({
     selector: "login",
@@ -22,6 +23,10 @@ import { AuthService } from "./auth.service";
                 </div>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
             </form>
+            <div class="register-link">
+                Don't have an account yet?
+                <a (click)="onRegister()">Click here to register!</a>
+            </div>
             <button class="btn btn-sm btn-default btn-block" type="submit" (click)="callExternalLogin('Google')"> 
                 Login with Google 
             </button> 
@@ -66,6 +71,10 @@ export class LoginComponent {
                 //login failure
                 this.loginError = true;
             });
+    }
+
+    onRegister() {
+        this.router.navigate(["register"]);
     }
 
     callExternalLogin(providerName: string) {

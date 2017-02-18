@@ -64,6 +64,9 @@ System.register(["@angular/core", "@angular/forms", "@angular/router", "./auth.s
                         _this.loginError = true;
                     });
                 };
+                LoginComponent.prototype.onRegister = function () {
+                    this.router.navigate(["register"]);
+                };
                 LoginComponent.prototype.callExternalLogin = function (providerName) {
                     var url = "api/Accounts/ExternalLogin/" + providerName;
                     //minimalistic mobile devices support
@@ -81,7 +84,7 @@ System.register(["@angular/core", "@angular/forms", "@angular/router", "./auth.s
             LoginComponent = __decorate([
                 core_1.Component({
                     selector: "login",
-                    template: " \n       <div class=\"login-container\">\n            <h2 class=\"form-login-heading\">Login</h2>\n            <div class=\"alert alert-danger\" role=\"alert\" *ngIf=\"loginError\">\n                <strong>Warning:</strong> Username or Password mismatch\n            </div> \n            <form class=\"form-login\" [formGroup]=\"loginForm\" (submit)=\"performLogin($event)\">\n                <input formControlName=\"username\" type=\"text\" class=\"form-control\" placeholder=\"Your username or e-mail address\" required autofocus /> \n                <input formControlName=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Your password\" required /> \n                <div class=\"checkbox\">\n                    <label>\n                        <input type=\"checkbox\" value=\"remember-me\">\n                        Remember Me\n                    </label>\n                </div>\n                <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Sign in</button>\n            </form>\n            <button class=\"btn btn-sm btn-default btn-block\" type=\"submit\" (click)=\"callExternalLogin('Google')\"> \n                Login with Google \n            </button> \n        </div>\n    "
+                    template: " \n       <div class=\"login-container\">\n            <h2 class=\"form-login-heading\">Login</h2>\n            <div class=\"alert alert-danger\" role=\"alert\" *ngIf=\"loginError\">\n                <strong>Warning:</strong> Username or Password mismatch\n            </div> \n            <form class=\"form-login\" [formGroup]=\"loginForm\" (submit)=\"performLogin($event)\">\n                <input formControlName=\"username\" type=\"text\" class=\"form-control\" placeholder=\"Your username or e-mail address\" required autofocus /> \n                <input formControlName=\"password\" type=\"password\" class=\"form-control\" placeholder=\"Your password\" required /> \n                <div class=\"checkbox\">\n                    <label>\n                        <input type=\"checkbox\" value=\"remember-me\">\n                        Remember Me\n                    </label>\n                </div>\n                <button class=\"btn btn-lg btn-primary btn-block\" type=\"submit\">Sign in</button>\n            </form>\n            <div class=\"register-link\">\n                Don't have an account yet?\n                <a (click)=\"onRegister()\">Click here to register!</a>\n            </div>\n            <button class=\"btn btn-sm btn-default btn-block\" type=\"submit\" (click)=\"callExternalLogin('Google')\"> \n                Login with Google \n            </button> \n        </div>\n    "
                 }),
                 __metadata("design:paramtypes", [forms_1.FormBuilder,
                     router_1.Router,
